@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDvdTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDvdEmpty}" rendered="#{dvdController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{dvdController.items.rowCount > 0}">
+                    <h:outputText value="#{dvdController.pagination.pageFirstItem + 1}..#{dvdController.pagination.pageLastItem + 1}/#{dvdController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{dvdController.previous}" value="#{bundle.Previous} #{dvdController.pagination.pageSize}" rendered="#{dvdController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{dvdController.next}" value="#{bundle.Next} #{dvdController.pagination.pageSize}" rendered="#{dvdController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{dvdController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDvdTitle_iddvd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iddvd}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDvdTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDvdTitle_ubicacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ubicacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDvdTitle_condicion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.condicion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDvdTitle_idtitulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtitulo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{dvdController.prepareView}" value="#{bundle.ListDvdViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dvdController.prepareEdit}" value="#{bundle.ListDvdEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dvdController.destroy}" value="#{bundle.ListDvdDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{dvdController.prepareCreate}" value="#{bundle.ListDvdCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDvdIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

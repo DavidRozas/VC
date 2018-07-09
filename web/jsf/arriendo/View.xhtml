@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewArriendoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewArriendoLabel_idarriendo}"/>
+                    <h:outputText value="#{arriendoController.selected.idarriendo}" title="#{bundle.ViewArriendoTitle_idarriendo}"/>
+                    <h:outputText value="#{bundle.ViewArriendoLabel_fechaarriendo}"/>
+                    <h:outputText value="#{arriendoController.selected.fechaarriendo}" title="#{bundle.ViewArriendoTitle_fechaarriendo}"/>
+                    <h:outputText value="#{bundle.ViewArriendoLabel_valorarriendo}"/>
+                    <h:outputText value="#{arriendoController.selected.valorarriendo}" title="#{bundle.ViewArriendoTitle_valorarriendo}"/>
+                    <h:outputText value="#{bundle.ViewArriendoLabel_rut}"/>
+                    <h:outputText value="#{arriendoController.selected.rut}" title="#{bundle.ViewArriendoTitle_rut}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{arriendoController.destroyAndView}" value="#{bundle.ViewArriendoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewArriendoEditLink}"/>
+                <br />
+                <h:commandLink action="#{arriendoController.prepareCreate}" value="#{bundle.ViewArriendoCreateLink}" />
+                <br />
+                <h:commandLink action="#{arriendoController.prepareList}" value="#{bundle.ViewArriendoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewArriendoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

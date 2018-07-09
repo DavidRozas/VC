@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDetallearriendoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDetallearriendoLabel_iddetalle}" for="iddetalle" />
+                    <h:inputText id="iddetalle" value="#{detallearriendoController.selected.iddetalle}" title="#{bundle.CreateDetallearriendoTitle_iddetalle}" required="true" requiredMessage="#{bundle.CreateDetallearriendoRequiredMessage_iddetalle}"/>
+                    <h:outputLabel value="#{bundle.CreateDetallearriendoLabel_diasprestamo}" for="diasprestamo" />
+                    <h:inputText id="diasprestamo" value="#{detallearriendoController.selected.diasprestamo}" title="#{bundle.CreateDetallearriendoTitle_diasprestamo}" required="true" requiredMessage="#{bundle.CreateDetallearriendoRequiredMessage_diasprestamo}"/>
+                    <h:outputLabel value="#{bundle.CreateDetallearriendoLabel_fechadevolucion}" for="fechadevolucion" />
+                    <h:inputText id="fechadevolucion" value="#{detallearriendoController.selected.fechadevolucion}" title="#{bundle.CreateDetallearriendoTitle_fechadevolucion}" required="true" requiredMessage="#{bundle.CreateDetallearriendoRequiredMessage_fechadevolucion}"/>
+                    <h:outputLabel value="#{bundle.CreateDetallearriendoLabel_idarriendo}" for="idarriendo" />
+                    <h:selectOneMenu id="idarriendo" value="#{detallearriendoController.selected.idarriendo}" title="#{bundle.CreateDetallearriendoTitle_idarriendo}" required="true" requiredMessage="#{bundle.CreateDetallearriendoRequiredMessage_idarriendo}">
+                        <f:selectItems value="#{arriendoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDetallearriendoLabel_iddvd}" for="iddvd" />
+                    <h:selectOneMenu id="iddvd" value="#{detallearriendoController.selected.iddvd}" title="#{bundle.CreateDetallearriendoTitle_iddvd}" required="true" requiredMessage="#{bundle.CreateDetallearriendoRequiredMessage_iddvd}">
+                        <f:selectItems value="#{dvdController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detallearriendoController.create}" value="#{bundle.CreateDetallearriendoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detallearriendoController.prepareList}" value="#{bundle.CreateDetallearriendoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDetallearriendoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

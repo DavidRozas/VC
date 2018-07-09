@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDetallearriendoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDetallearriendoLabel_iddetalle}"/>
+                    <h:outputText value="#{detallearriendoController.selected.iddetalle}" title="#{bundle.ViewDetallearriendoTitle_iddetalle}"/>
+                    <h:outputText value="#{bundle.ViewDetallearriendoLabel_diasprestamo}"/>
+                    <h:outputText value="#{detallearriendoController.selected.diasprestamo}" title="#{bundle.ViewDetallearriendoTitle_diasprestamo}"/>
+                    <h:outputText value="#{bundle.ViewDetallearriendoLabel_fechadevolucion}"/>
+                    <h:outputText value="#{detallearriendoController.selected.fechadevolucion}" title="#{bundle.ViewDetallearriendoTitle_fechadevolucion}"/>
+                    <h:outputText value="#{bundle.ViewDetallearriendoLabel_idarriendo}"/>
+                    <h:outputText value="#{detallearriendoController.selected.idarriendo}" title="#{bundle.ViewDetallearriendoTitle_idarriendo}"/>
+                    <h:outputText value="#{bundle.ViewDetallearriendoLabel_iddvd}"/>
+                    <h:outputText value="#{detallearriendoController.selected.iddvd}" title="#{bundle.ViewDetallearriendoTitle_iddvd}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detallearriendoController.destroyAndView}" value="#{bundle.ViewDetallearriendoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDetallearriendoEditLink}"/>
+                <br />
+                <h:commandLink action="#{detallearriendoController.prepareCreate}" value="#{bundle.ViewDetallearriendoCreateLink}" />
+                <br />
+                <h:commandLink action="#{detallearriendoController.prepareList}" value="#{bundle.ViewDetallearriendoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDetallearriendoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

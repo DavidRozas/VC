@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTituloTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTituloLabel_idtitulo}" for="idtitulo" />
+                    <h:inputText id="idtitulo" value="#{tituloController.selected.idtitulo}" title="#{bundle.EditTituloTitle_idtitulo}" required="true" requiredMessage="#{bundle.EditTituloRequiredMessage_idtitulo}"/>
+                    <h:outputLabel value="#{bundle.EditTituloLabel_nombretitulo}" for="nombretitulo" />
+                    <h:inputText id="nombretitulo" value="#{tituloController.selected.nombretitulo}" title="#{bundle.EditTituloTitle_nombretitulo}" required="true" requiredMessage="#{bundle.EditTituloRequiredMessage_nombretitulo}"/>
+                    <h:outputLabel value="#{bundle.EditTituloLabel_tema}" for="tema" />
+                    <h:inputText id="tema" value="#{tituloController.selected.tema}" title="#{bundle.EditTituloTitle_tema}" required="true" requiredMessage="#{bundle.EditTituloRequiredMessage_tema}"/>
+                    <h:outputLabel value="#{bundle.EditTituloLabel_idioma}" for="idioma" />
+                    <h:inputText id="idioma" value="#{tituloController.selected.idioma}" title="#{bundle.EditTituloTitle_idioma}" required="true" requiredMessage="#{bundle.EditTituloRequiredMessage_idioma}"/>
+                    <h:outputLabel value="#{bundle.EditTituloLabel_estadotitulo}" for="estadotitulo" />
+                    <h:inputText id="estadotitulo" value="#{tituloController.selected.estadotitulo}" title="#{bundle.EditTituloTitle_estadotitulo}" required="true" requiredMessage="#{bundle.EditTituloRequiredMessage_estadotitulo}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{tituloController.update}" value="#{bundle.EditTituloSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTituloViewLink}"/>
+                <br />
+                <h:commandLink action="#{tituloController.prepareList}" value="#{bundle.EditTituloShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTituloIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

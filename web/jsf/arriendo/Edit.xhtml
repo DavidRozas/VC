@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditArriendoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditArriendoLabel_idarriendo}" for="idarriendo" />
+                    <h:inputText id="idarriendo" value="#{arriendoController.selected.idarriendo}" title="#{bundle.EditArriendoTitle_idarriendo}" required="true" requiredMessage="#{bundle.EditArriendoRequiredMessage_idarriendo}"/>
+                    <h:outputLabel value="#{bundle.EditArriendoLabel_fechaarriendo}" for="fechaarriendo" />
+                    <h:inputText id="fechaarriendo" value="#{arriendoController.selected.fechaarriendo}" title="#{bundle.EditArriendoTitle_fechaarriendo}" required="true" requiredMessage="#{bundle.EditArriendoRequiredMessage_fechaarriendo}"/>
+                    <h:outputLabel value="#{bundle.EditArriendoLabel_valorarriendo}" for="valorarriendo" />
+                    <h:inputText id="valorarriendo" value="#{arriendoController.selected.valorarriendo}" title="#{bundle.EditArriendoTitle_valorarriendo}" required="true" requiredMessage="#{bundle.EditArriendoRequiredMessage_valorarriendo}"/>
+                    <h:outputLabel value="#{bundle.EditArriendoLabel_rut}" for="rut" />
+                    <h:selectOneMenu id="rut" value="#{arriendoController.selected.rut}" title="#{bundle.EditArriendoTitle_rut}" required="true" requiredMessage="#{bundle.EditArriendoRequiredMessage_rut}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{arriendoController.update}" value="#{bundle.EditArriendoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditArriendoViewLink}"/>
+                <br />
+                <h:commandLink action="#{arriendoController.prepareList}" value="#{bundle.EditArriendoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditArriendoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

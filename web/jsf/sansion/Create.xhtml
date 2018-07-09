@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSansionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSansionLabel_idsansion}" for="idsansion" />
+                    <h:inputText id="idsansion" value="#{sansionController.selected.idsansion}" title="#{bundle.CreateSansionTitle_idsansion}" required="true" requiredMessage="#{bundle.CreateSansionRequiredMessage_idsansion}"/>
+                    <h:outputLabel value="#{bundle.CreateSansionLabel_tiposansion}" for="tiposansion" />
+                    <h:inputText id="tiposansion" value="#{sansionController.selected.tiposansion}" title="#{bundle.CreateSansionTitle_tiposansion}" required="true" requiredMessage="#{bundle.CreateSansionRequiredMessage_tiposansion}"/>
+                    <h:outputLabel value="#{bundle.CreateSansionLabel_diassancion}" for="diassancion" />
+                    <h:inputText id="diassancion" value="#{sansionController.selected.diassancion}" title="#{bundle.CreateSansionTitle_diassancion}" required="true" requiredMessage="#{bundle.CreateSansionRequiredMessage_diassancion}"/>
+                    <h:outputLabel value="#{bundle.CreateSansionLabel_rut}" for="rut" />
+                    <h:selectOneMenu id="rut" value="#{sansionController.selected.rut}" title="#{bundle.CreateSansionTitle_rut}" required="true" requiredMessage="#{bundle.CreateSansionRequiredMessage_rut}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sansionController.create}" value="#{bundle.CreateSansionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{sansionController.prepareList}" value="#{bundle.CreateSansionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSansionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

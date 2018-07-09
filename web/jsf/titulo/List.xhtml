@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTituloTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTituloEmpty}" rendered="#{tituloController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tituloController.items.rowCount > 0}">
+                    <h:outputText value="#{tituloController.pagination.pageFirstItem + 1}..#{tituloController.pagination.pageLastItem + 1}/#{tituloController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tituloController.previous}" value="#{bundle.Previous} #{tituloController.pagination.pageSize}" rendered="#{tituloController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tituloController.next}" value="#{bundle.Next} #{tituloController.pagination.pageSize}" rendered="#{tituloController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tituloController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTituloTitle_idtitulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtitulo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTituloTitle_nombretitulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombretitulo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTituloTitle_tema}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tema}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTituloTitle_idioma}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idioma}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTituloTitle_estadotitulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estadotitulo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tituloController.prepareView}" value="#{bundle.ListTituloViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tituloController.prepareEdit}" value="#{bundle.ListTituloEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tituloController.destroy}" value="#{bundle.ListTituloDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tituloController.prepareCreate}" value="#{bundle.ListTituloCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTituloIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

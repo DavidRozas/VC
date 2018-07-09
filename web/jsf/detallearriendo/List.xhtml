@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDetallearriendoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDetallearriendoEmpty}" rendered="#{detallearriendoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{detallearriendoController.items.rowCount > 0}">
+                    <h:outputText value="#{detallearriendoController.pagination.pageFirstItem + 1}..#{detallearriendoController.pagination.pageLastItem + 1}/#{detallearriendoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{detallearriendoController.previous}" value="#{bundle.Previous} #{detallearriendoController.pagination.pageSize}" rendered="#{detallearriendoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{detallearriendoController.next}" value="#{bundle.Next} #{detallearriendoController.pagination.pageSize}" rendered="#{detallearriendoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{detallearriendoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallearriendoTitle_iddetalle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iddetalle}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallearriendoTitle_diasprestamo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diasprestamo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallearriendoTitle_fechadevolucion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechadevolucion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallearriendoTitle_idarriendo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idarriendo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDetallearriendoTitle_iddvd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iddvd}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{detallearriendoController.prepareView}" value="#{bundle.ListDetallearriendoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detallearriendoController.prepareEdit}" value="#{bundle.ListDetallearriendoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detallearriendoController.destroy}" value="#{bundle.ListDetallearriendoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{detallearriendoController.prepareCreate}" value="#{bundle.ListDetallearriendoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDetallearriendoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

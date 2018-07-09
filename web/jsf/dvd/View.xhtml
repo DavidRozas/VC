@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDvdTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDvdLabel_iddvd}"/>
+                    <h:outputText value="#{dvdController.selected.iddvd}" title="#{bundle.ViewDvdTitle_iddvd}"/>
+                    <h:outputText value="#{bundle.ViewDvdLabel_estado}"/>
+                    <h:outputText value="#{dvdController.selected.estado}" title="#{bundle.ViewDvdTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewDvdLabel_ubicacion}"/>
+                    <h:outputText value="#{dvdController.selected.ubicacion}" title="#{bundle.ViewDvdTitle_ubicacion}"/>
+                    <h:outputText value="#{bundle.ViewDvdLabel_condicion}"/>
+                    <h:outputText value="#{dvdController.selected.condicion}" title="#{bundle.ViewDvdTitle_condicion}"/>
+                    <h:outputText value="#{bundle.ViewDvdLabel_idtitulo}"/>
+                    <h:outputText value="#{dvdController.selected.idtitulo}" title="#{bundle.ViewDvdTitle_idtitulo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dvdController.destroyAndView}" value="#{bundle.ViewDvdDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDvdEditLink}"/>
+                <br />
+                <h:commandLink action="#{dvdController.prepareCreate}" value="#{bundle.ViewDvdCreateLink}" />
+                <br />
+                <h:commandLink action="#{dvdController.prepareList}" value="#{bundle.ViewDvdShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDvdIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

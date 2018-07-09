@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSansionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSansionLabel_idsansion}"/>
+                    <h:outputText value="#{sansionController.selected.idsansion}" title="#{bundle.ViewSansionTitle_idsansion}"/>
+                    <h:outputText value="#{bundle.ViewSansionLabel_tiposansion}"/>
+                    <h:outputText value="#{sansionController.selected.tiposansion}" title="#{bundle.ViewSansionTitle_tiposansion}"/>
+                    <h:outputText value="#{bundle.ViewSansionLabel_diassancion}"/>
+                    <h:outputText value="#{sansionController.selected.diassancion}" title="#{bundle.ViewSansionTitle_diassancion}"/>
+                    <h:outputText value="#{bundle.ViewSansionLabel_rut}"/>
+                    <h:outputText value="#{sansionController.selected.rut}" title="#{bundle.ViewSansionTitle_rut}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sansionController.destroyAndView}" value="#{bundle.ViewSansionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSansionEditLink}"/>
+                <br />
+                <h:commandLink action="#{sansionController.prepareCreate}" value="#{bundle.ViewSansionCreateLink}" />
+                <br />
+                <h:commandLink action="#{sansionController.prepareList}" value="#{bundle.ViewSansionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSansionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

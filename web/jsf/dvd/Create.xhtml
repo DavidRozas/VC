@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDvdTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDvdLabel_iddvd}" for="iddvd" />
+                    <h:inputText id="iddvd" value="#{dvdController.selected.iddvd}" title="#{bundle.CreateDvdTitle_iddvd}" required="true" requiredMessage="#{bundle.CreateDvdRequiredMessage_iddvd}"/>
+                    <h:outputLabel value="#{bundle.CreateDvdLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{dvdController.selected.estado}" title="#{bundle.CreateDvdTitle_estado}" required="true" requiredMessage="#{bundle.CreateDvdRequiredMessage_estado}"/>
+                    <h:outputLabel value="#{bundle.CreateDvdLabel_ubicacion}" for="ubicacion" />
+                    <h:inputText id="ubicacion" value="#{dvdController.selected.ubicacion}" title="#{bundle.CreateDvdTitle_ubicacion}" required="true" requiredMessage="#{bundle.CreateDvdRequiredMessage_ubicacion}"/>
+                    <h:outputLabel value="#{bundle.CreateDvdLabel_condicion}" for="condicion" />
+                    <h:inputText id="condicion" value="#{dvdController.selected.condicion}" title="#{bundle.CreateDvdTitle_condicion}" required="true" requiredMessage="#{bundle.CreateDvdRequiredMessage_condicion}"/>
+                    <h:outputLabel value="#{bundle.CreateDvdLabel_idtitulo}" for="idtitulo" />
+                    <h:selectOneMenu id="idtitulo" value="#{dvdController.selected.idtitulo}" title="#{bundle.CreateDvdTitle_idtitulo}" required="true" requiredMessage="#{bundle.CreateDvdRequiredMessage_idtitulo}">
+                        <f:selectItems value="#{tituloController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dvdController.create}" value="#{bundle.CreateDvdSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{dvdController.prepareList}" value="#{bundle.CreateDvdShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDvdIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
